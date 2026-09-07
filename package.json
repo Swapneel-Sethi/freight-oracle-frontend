@@ -1,0 +1,44 @@
+{
+  "name": "freight-oracle-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx"
+  },
+  "dependencies": {
+    "@deck.gl/core": "^8.9.36",
+    "@deck.gl/geo-layers": "^8.9.36",
+    "@react-google-maps/api": "^2.19.3",
+    "d3": "^7.8.5",
+    "deck.gl": "^8.9.36",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "@tanstack/react-query": "^5.8.0",
+    "recharts": "^2.10.0",
+    "three": "^0.159.0",
+    "@react-three/fiber": "^8.15.0",
+    "@react-three/drei": "^9.92.0",
+    "react-dropzone": "^14.2.3"
+  },
+  "devDependencies": {
+    "@types/three": "^0.159.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/d3": "^7.4.3",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "eslint": "^8.51.0",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "prettier": "^3.0.3"
+  }
+}
