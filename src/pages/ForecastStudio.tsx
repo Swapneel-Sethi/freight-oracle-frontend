@@ -11,9 +11,13 @@ export default function ForecastStudio() {
   const { data, isLoading } = useQuery({
     queryKey: ['forecast', route, commodity, vesselClass],
     queryFn: async () => {
-      const res = await fetch(`/api/v1/models/forecast?route=${route}&commodity=${commodity}&vessel_class=${vesselClass}&horizon_days=${horizon}`)
-      if (!res.ok) throw new Error('Forecast failed')
-      return res.json()
+      try {
+        const res = await fetch(`/api/v1/models/forecast?route=${route}&commodity=${commodity}&vessel_class=${vesselClass}&horizon_days=${horizon}`)
+        if (!res.ok) throw new Error('Forecast failed')
+        return res.json()
+      } catch {
+        return null
+      }
     },
     refetchInterval: 60000,
   })

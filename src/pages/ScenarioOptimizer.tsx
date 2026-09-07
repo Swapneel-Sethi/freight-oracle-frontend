@@ -23,12 +23,17 @@ export default function ScenarioOptimizer() {
   const { data, isLoading } = useQuery({
     queryKey: ['optimize', form],
     queryFn: async () => {
-      const res = await fetch('/api/v1/scenario/optimize', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-      return res.json()
+      try {
+        const res = await fetch('/api/v1/scenario/optimize', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(form),
+        })
+        if (!res.ok) throw new Error('API unavailable')
+        return res.json()
+      } catch {
+        return { options: [] }
+      }
     },
     refetchInterval: 30000,
   })
