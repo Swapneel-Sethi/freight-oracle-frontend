@@ -21,38 +21,35 @@ const queryClient = new QueryClient({
   },
 })
 
-function App() {
+function AppInner() {
   const { freightQ50, overhangScore } = useKpi()
-  
+
+  return (
+    <BrowserRouter>
+      {/* Temple Night background scene (disabled) */}
+      {/* Navigation overlay */}
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <Navigation />
+        
+        <Routes>
+          <Route path="/" element={<CommandDashboard />} />
+          <Route path="/forecast" element={<ForecastStudio />} />
+          <Route path="/optimize" element={<ScenarioOptimizer />} />
+          <Route path="/demurrage" element={<DemurrageSimulator />} />
+          <Route path="/fleet" element={<FleetBallaster />} />
+          <Route path="/warroom" element={<CrisisWarRoom />} />
+          <Route path="/admin" element={<AdminIngest />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  )
+}
+
+function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        {/* Temple Night background scene */}
-        {/* (Temporarily disabled for debugging) */}
-        {/* <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
-          <TempleNightScene 
-            freightQ50={freightQ50} 
-            overhangScore={overhangScore} 
-          />
-        </div> */}
-        
-        {/* Navigation overlay */}
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <Navigation />
-          
-          {/* Page routes */}
-          <Routes>
-            <Route path="/" element={<CommandDashboard />} />
-            <Route path="/forecast" element={<ForecastStudio />} />
-            <Route path="/optimize" element={<ScenarioOptimizer />} />
-            <Route path="/demurrage" element={<DemurrageSimulator />} />
-            <Route path="/fleet" element={<FleetBallaster />} />
-            <Route path="/warroom" element={<CrisisWarRoom />} />
-            <Route path="/admin" element={<AdminIngest />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
+      <AppInner />
     </QueryClientProvider>
   )
 }
